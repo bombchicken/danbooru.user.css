@@ -1,0 +1,747 @@
+/* danbooru.base16.eighties.dark */
+/* A danbooru theme using the base16 eighties colour palatte */
+/* Supports Better Better Booru script */
+
+@namespace url(http://www.w3.org/1999/xhtml);
+@-moz-document domain("donmai.us") {
+  :root {
+    /* variables for quick and easy customisation! */
+    /* variables require Firefox 31+ */
+    --fonts: "Proxima Nova", "Montserrat", sans;
+    --fonts-monospace: terminus, monospace;
+    --border-radius: 2px; /* feel free to change this if you love/hate rounded corners */
+    /* Colours */
+    --fg-light: #d3d0c8; --fg-dark: #515151;
+    --bg-dark: #2d2d2d; --bg-light: #393939;
+    --base-red: #f2777a; /* admin, flagged, deleted, artist tags */
+    --base-orange: #f99157; /* moderators */
+    --base-yellow: #ffcc66; /* parents, gold members, notifications */
+    --base-green: #99cc99; /* janitors, children, character tags */
+    --base-cyan: #66cccc; /* builders, category tags, appealed */
+    --base-blue: #6699cc; /* links, mod queue */
+    --base-magenta: #cc99cc; /* contributors, copyrights tags, pending notice, resized notice */
+    --base-brown: #d27b53; /* not used */
+    --base-black: #2d2d2d; /* deleted, banned */
+    --base-white: #f2f0ec; /* platinum members */
+  }
+  /* Custom CSS Tweaks - Stolen from the forum */
+  
+  /* Color request tags to be more noticeable */
+  a.search-tag[href*=_request], a.search-tag[href*=tagme] { color: var(--base-brown); }
+  /*a.search-tag[href*=_request]:hover, a.search-tag[href*=tagme]:hover { color: #666; }*/
+  
+  /* Shove the forum post IDs listed on the Reply rows to the right and color them. */
+  div.list-of-forum-posts menu li:first-child { float:right; color:var(--fg-light) }
+  
+  /* Hide the post search Go button */
+  *#search-box form input[type="submit"] { display: none }
+  /* ...and resize the search box to take up the extra space */
+  input#tags { width: 83% !important }
+  
+  /* Resize the Mode selection box */
+  SELECT[name="mode"] { width: 83% }
+  
+  /* Hide upload guide notice */
+  div#upload-guide-notice { display:none }
+  
+  /* Collapse blacklisted tags, hover to show */
+  #blacklist-box ul { display: none; }
+  #blacklist-box:hover ul { display: block; }
+  /* Add a cosmetic arrow indicator */
+  #blacklist-box h1:before { content: "▶ "; }
+  #blacklist-box:hover h1:before { content: "▼ "; }
+  
+  /* Change header text */
+  /* This is not recommended; userjs is typically better for this kind of thing */
+  /* also, since danbooru doesn't use a class or id for the header we have to use relative selectors, which may/will break if the site is updated */
+  #top > h1 > a {
+    visibility: hidden;
+  }
+  #top > h1 > a:before {
+    content: '段ボール';
+    visibility: visible;
+    font-family: "KFHimaji", sans;
+    font-weight: normal;
+    font-size: 1.5em;
+  }
+  
+  /* Remove Copyrights/Characters/Artists/Tags Subheaders. */
+  /*
+  section#tag-list h1 { display:none }
+  section#tag-list h2 { display:none }
+  section#tag-list ul { margin-bottom:0 }
+  */
+  
+  /* Mask the thumbnails of images tagged as spoilers until hovering.
+  Additionally, give it a dashed border to distinguish from other pale images */
+  /*
+  .post-preview[data-tags~="spoilers"] img {opacity: 0.1; outline:var(--base-black) 1px dashed;}
+  .post-preview[data-tags~="spoilers"] img:hover {opacity: 1; outline:none;}
+  */
+  /* alternatively, just make the thumbnail black */
+  .post-preview[data-tags~="spoilers"] img {filter:brightness(0); outline:var(--base-black) 1px dashed;}
+  .post-preview[data-tags~="spoilers"] img:hover {filter: unset;}
+  /* or Blur thumbnails of images tagged as spoilers until hovering */
+  /*
+  .post-preview[data-tags~="spoilers"] img {filter: blur(5px);}
+  .post-preview[data-tags~="spoilers"] img:hover {filter: unset;}
+  */
+  
+  /* Translation Status Icons in bottom right corner */
+  /* General settings for all thumbnail icons. */
+  article.post-preview a {display: inline-block; position: relative;}
+  
+  div#c-comments div#a-index div.post-preview div.preview:before,
+  div#c-comments div#a-index div.post-preview div.preview a:before,
+    div#c-comments div#a-index div.post-preview div.preview a:after,
+    div#c-comments div#a-show  div.post-preview div.preview:before,
+    div#c-comments div#a-show  div.post-preview div.preview a:before,
+    div#c-comments div#a-show  div.post-preview div.preview a:after,
+    article.post-preview:before,
+    article.post-preview a:before,
+    article.post-preview a:after {
+      color: var(--fg-light);
+      background-color: rgba(0, 0, 0, 0.5);
+
+      font-family: var(--fonts);
+      line-height: 20px !important;
+      text-align:  center;
+
+      margin: 2px;
+      width:  20px !important;
+      height: 20px !important;
+
+      /* Prevent the icon from getting in the way of clicking on the thumbnail. */
+      pointer-events: none;
+
+      z-index: 100 !important;
+    }
+
+  #c-comments #a-show  div.post-preview[data-tags~="translation_request"] div.preview a:before,
+    #c-comments #a-index div.post-preview[data-tags~="translation_request"] div.preview a:before,
+    article.post-preview[data-tags~="translation_request"] a:before {
+      content: "あ";
+
+      position: absolute;
+      bottom:   0;
+      right:    0;
+    }
+
+  #c-comments #a-show  div.post-preview[data-tags~="translated"] div.preview a:before,
+    #c-comments #a-index div.post-preview[data-tags~="translated"] div.preview a:before,
+    article.post-preview[data-tags~="translated"] a:before {
+      content: "a";
+
+      position: absolute;
+      bottom:   0;
+      right:    0;
+    }
+    
+  /* Dim the thumbnails for NSFW images */
+  /*.post-preview[data-rating="q"] img {opacity: 0.2;}*/
+  .post-preview[data-rating="e"] img {opacity: 0.2; filter: blur(5px);}
+  .post-preview[data-rating="e"] img:hover {opacity: 1; filter: unset;}
+  /*Dim the thumbnails for images from a certain uploader*/
+  /*.post-preview[data-uploader="Type-kun"] img {opacity: 0.2;}*/
+  /*Dim the thumbnails for images with negative score*/
+  .post-preview[data-score^="-"] img {opacity: 0.2;}
+  /*Dim the thumbnails for images containing a certain tag*/
+  /*.post-preview[data-tags~="1boy"] img {opacity: 0.2;}*/
+  /*The same for a combination of tags*/
+  /*.post-preview[data-tags~="1girl"][data-tags~="1boy"] img {opacity: 0.2;}*/
+  
+  /* Visually indicate translation status of posts on their previews in */
+  /* relevant Danbooru pages (pools, search results, etc) */
+  /* CSS by kounishin; adapted from idea by itsonlyaname in forum #84726 */
+  /* Borders are set to 1px + 1px padding so as not to change the page layout: */
+  /* Danbooru 2 uses 2px transparent borders on the <article> elements at time */
+  /* of writing (2013-02-23). This will break if the Danbooru styles change. */
+  /* Last match wins. partially_translated comes last because all posts with */
+  /* that tag also have translation_request by automatic implication. */
+  /*
+  article.post-preview[data-tags~="translated"] {
+  border: 1px solid green !important;
+  padding: 1px !important;
+  }
+  article.post-preview[data-tags~="check_translation"] {
+  border: 1px dotted green !important;
+  padding: 1px !important;
+  }
+  article.post-preview[data-tags~="commentary_request"] {
+  border: 1px dashed red !important;
+  padding: 1px !important;
+  }
+  article.post-preview[data-tags~="translation_request"] {
+  border: 1px dotted red !important;
+  padding: 1px !important;
+  }
+  article.post-preview[data-tags~="partially_translated"] {
+  border: 1px dotted orange !important;
+  padding: 1px !important;
+  }
+  */
+  
+  /*Comment blacklisting*/
+  /*hide the comments from a specific user*/
+  /*
+  article.comment[data-creator="albert"] {display:none;}
+  */
+  /*Or 'white them out' - you will see the blank space, selecting it with mouse will allow to read it.*/
+  /*
+  article.comment[data-creator="albert"] *{background:white; color:white; border:none;}
+  */
+  /*Same white-out, but only the text, so you can see the comment author and date.
+  Additionally, show the text on mouseover*/
+  /*
+  article.comment[data-creator="albert"] .content *{background:white; color:white; border:none;}
+  article.comment[data-creator="albert"] .content:hover *{color:black;}
+  */
+
+  /*Same things for forum posts*/
+  /*hide*/
+  /*
+  .list-of-forum-posts article[data-creator="albert"] {display:none;}
+  */
+  /*white-out*/
+  /*
+  .list-of-forum-posts article[data-creator="albert"] *{background:white; color:white; border:none;}
+  */
+  /*only the text white-out*/
+  /*
+  .list-of-forum-posts article[data-creator="albert"] .content *{background:white; color:white; border:none;}
+  */
+  /* Hide posts by a certain user until hovering over them */
+  /*
+  article.comment[data-creator="albert"] { opacity: 0.3; }
+  article.comment[data-creator="albert"]:hover { opacity: 1; }
+  .list-of-forum-posts article[data-creator="albert"] { opacity: 0.3; }
+  .list-of-forum-posts article[data-creator="albert"]:hover { opacity: 1; }
+  */
+  
+  /* Main CSS */
+  body {
+    background-color: var(--bg-dark) !important;
+    color: var(--fg-light) !important;
+    font-family: var(--fonts);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fonts);
+  }
+  #page, #top, #page-footer {
+    background-color: var(--bg-dark) !important;
+  }
+  header {
+    background-color: var(--bg-dark) !important;
+  }
+  header#top menu.main {
+    background-color: var(--bg-dark) !important;
+  }
+  .current, .current > a {
+    background-color: var(--bg-light) !important;
+  }
+  header#top menu {
+    background-color: var(--bg-light) !important;
+  }
+  div.paginator li a {
+    border: none;
+    margin: 0 0.25em;
+    padding: 0.25em 0.75em;
+  }
+  div.paginator li a:hover {
+    background: none;
+    color: var(--base-blue);
+  }
+  footer#page-footer {
+    border-top: 1px solid var(--bg-light);
+    font-size: 0.8em;
+  }
+  
+  /* custom input elements */
+  input, select, button, textarea {
+    background-color: var(--bg-light);
+    border: 1px solid var(--bg-light);
+    border-radius: var(--border-radius);
+    color: var(--fg-light);
+      
+    box-sizing: border-box;
+  }
+  input[type=submit], button {
+    padding: 1px 5px;
+  }
+  input[type=text] {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  input:hover, input:active, input:focus,
+  select:hover, select:active, select:focus,
+  button:hover, button:active, button:focus,
+  textarea:hover, textarea:active, textarea:focus {
+    border-color: var(--base-blue);
+  }
+
+  /* Move form labels to the left of input elements instead of above them. */
+  #c-posts #a-show #edit #form .input > label,      /* Rating / Lock / Parent / Source labels */
+  #c-posts #a-show #edit #form .input > div > label /* Tags label */ {
+    display:   inline-block;
+    min-width: 10%;
+  }
+  #c-posts #a-show #related-tags-button,
+  #c-posts #a-show #related-artists-button,
+  #c-posts #a-show #related-characters-button,
+  #c-posts #a-show #related-copyrights-button,
+  #c-posts #a-show #edit #form input[type="submit"] {
+    position: relative;
+    left: 10%;
+    margin:   0 5px;
+  }
+  #post_tag_string {
+    margin-bottom: 5px;
+  }
+  #c-posts #a-show #source-info {
+    border: 1px solid var(--bg-light);
+    border-radius: var(--border-radius);
+    display: none
+  }
+  div.related-tags {
+    background: var(--bg-light);
+    border-radius: var(--border-radius);
+  }
+  div.related-tags div.tag-column ul li a.selected {
+    background: var(--fg-dark);
+    color: inherit;
+  }
+  
+  /* make icons not stand out */
+  .ui-icon {
+    filter: grayscale(100%);
+  }
+  
+  /* DText, post formatting */
+  blockquote {
+    background: var(--bg-light) !important;
+    border: 1px solid var(--bg-light) !important;
+    border-radius: var(--border-radius);
+  }
+  .spoiler {
+    background: var(--bg-light);
+    color: var(--bg-light);
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+  .spoiler:hover {
+    color: var(--fg-light) !important;
+  }
+  pre {
+    font-family: var(--fonts-monospace) !important;
+    background: var(--bg-light) !important;
+    border: 1px solid var(--bg-light) !important;
+    border-radius: var(--border-radius);
+  }
+  .expandable {
+    border: 1px solid var(--bg-light) !important;
+    border-radius: var(--border-radius);
+  }
+  .expandable-content {
+    border-top: 1px solid var(--bg-light) !important;
+  }
+  
+  /* Table Styling */
+  table.striped tr.even {
+    background-color: var(--bg-light) !important;
+  }
+  table.striped tbody tr {
+    border-bottom: none !important;
+  }
+  table.striped tbody tr:hover {
+    background-color: var(--fg-dark) !important;
+  }
+  table.striped thead tr {
+    border-bottom: 2px solid var(--fg-dark);
+  }
+  table.striped thead th {
+    color: var(--fg-dark);
+  }
+  tr.even > td {
+    background: none !important;
+  }
+  tr.odd > td {
+    background: none !important;
+  }
+  
+  div#c-posts div#a-show #pool-nav li:hover, div#c-posts div#a-show #search-seq-nav li:hover, div#c-posts div#a-show #favgroup-nav li:hover {
+    background: inherit !important;
+  }
+  
+  /* tag changes on the 'changes' page */
+  div#c-post-versions div#a-index ins, div#c-post-versions div#a-index ins a, div#c-artist-versions div#a-index ins, div#c-artist-versions div#a-index ins a {
+    color: var(--base-green);
+  }
+  div#c-post-versions div#a-index del, div#c-post-versions div#a-index del a, div#c-artist-versions div#a-index del, div#c-artist-versions div#a-index del a {
+    color: var(--base-red);
+  }
+  
+  div#c-forum-topics span.new {
+    color: var(--base-red);
+  }
+  
+  /* link styling */
+  a:link {
+    color: var(--base-blue);
+  }
+  a:link:hover {
+    /*text-decoration: underline dotted;*/
+  }
+  a:visited {
+    color: var(--base-blue);
+  }
+  a:active, a.active {
+    color: var(--fg-light) !important;
+  }
+  
+  /* Sidebar link styling */
+  div#page aside#sidebar > section#blacklist-box ul a { /* this selector may break if site is updated */
+    color: var(--base-blue);
+  }
+  a.wiki-link {
+    font-size: 0.85em;
+    margin-right: 0.1em;
+  }
+  a.search-inc-tag, a.search-exl-tag {
+    font-size: 0.85em;
+  }
+  a[href*='score=up'] {
+    color: var(--base-green);
+  }
+  a[href*='score=down'] {
+    color: var(--base-red);
+  }
+  #add-to-favorites {
+    color: var(--base-yellow) !important;
+  }
+  #remove-from-favorites {
+    color: var(--base-red) !important;
+  }
+  #side-edit-link {
+    color: var(--base-green) !important;
+  }
+  section#post-options ul li a[download] {
+    color: var(--base-orange) !important;
+  }
+  #random-post {
+    color: var(--base-magenta) !important;
+  }
+  #flag {
+    color: var(--base-red) !important;
+  }
+  #pool {
+    color: var(--base-green) !important;
+  }
+  #bbb-note-toggle, #translate, #add-commentary {
+    color: var(--base-cyan) !important;
+  }
+  section#post-options ul li a[href*="iqdb"] {
+    color: var(--base-magenta) !important;
+  }
+  
+  /* Tag/Category Colors */
+  /* tags */
+  .category-0 a,a.tag-type-0,
+  .category-0 a:hover,a.tag-type-0:hover {
+    color: var(--base-cyan);
+  }
+  /* artist */
+  .category-1 a,a.tag-type-1,
+  .category-1 a:hover,a.tag-type-1:hover {
+    color: var(--base-red);
+  }
+  /* copyrights */
+  .category-3 a,a.tag-type-3,
+  .category-3 a:hover,a.tag-type-3:hover {
+    color: var(--base-magenta);
+  }
+  /* characters */
+  .category-4 a,a.tag-type-4,
+  .category-4 a:hover,a.tag-type-4:hover {
+    color: var(--base-green);
+  }
+  /* category 2 isn't used */
+  .category-2 a,a.tag-type-2,
+  .category-2 a:hover,a.tag-type-2:hover {
+    color: var(--base-yellow);
+  }
+  .category-banned a,a.tag-type-banned {
+    color: var(--base-black);
+    background-color: var(--base-red);
+  }
+  
+  /* Image Borders */
+  .post-preview img {
+    border: 2px solid var(--bg-light);
+  }
+  .post-preview.post-status-has-parent img {
+    border-color: var(--base-yellow);
+  }
+  .post-preview.post-status-has-children img {
+    border-color: var(--base-green);
+  }
+  .post-preview.post-status-has-children.post-status-has-parent img {
+    border-color: var(--base-green) var(--base-yellow) var(--base-yellow) var(--base-green);
+  }
+  .post-preview.post-status-deleted img {
+    border-color: var(--base-black);
+  }
+  .post-preview.post-status-has-parent.post-status-deleted img {
+    border-color: var(--base-yellow) var(--base-black) var(--base-black) var(--base-yellow);
+  }
+  .post-preview.post-status-has-children.post-status-deleted img {
+    border-color: var(--base-green) var(--base-black) var(--base-black) var(--base-green);
+  }
+  .post-preview.post-status-has-children.post-status-has-parent.post-status-deleted img {
+    border-color: var(--base-green) var(--base-black) var(--base-black) var(--base-yellow);
+  }
+  .post-preview.post-status-pending:not(.mod-queue-preview) img {
+    border-color: var(--base-blue);
+  }
+  .post-preview.post-status-has-children.post-status-pending:not(.mod-queue-preview) img {
+    border-color: var(--base-green) var(--base-blue) var(--base-blue) var(--base-green);
+  }
+  .post-preview.post-status-has-parent.post-status-pending:not(.mod-queue-preview) img {
+    border-color: var(--base-yellow) var(--base-blue) var(--base-blue) var(--base-yellow);
+  }
+  .post-preview.post-status-has-children.post-status-has-parent.post-status-pending:not(.mod-queue-preview) img {
+    border-color: var(--base-green) var(--base-blue) var(--base-blue) var(--base-yellow);
+  }
+  .post-preview.post-status-flagged img {
+    border-color: var(--base-red);
+  }
+  .post-preview.post-status-has-children.post-status-flagged img {
+    border-color: var(--base-green) var(--base-red) var(--base-red) var(--base-green);
+  }
+  .post-preview.post-status-has-parent.post-status-flagged img {
+    border-color: var(--base-yellow) var(--base-red) var(--base-red) var(--base-yellow);
+  }
+  .post-preview.post-status-has-children.post-status-has-parent.post-status-flagged img {
+    border-color: var(--base-green) var(--base-red) var(--base-red) var(--base-yellow);
+  }
+  
+  .post-preview.current-post {
+    background-color: rgba(0,0,0,0.1);
+  }
+  
+  /* User Styles */
+  .user-admin {
+    color: var(--base-red) !important;
+  }
+  .user-moderator {
+    color: var(--base-orange) !important;
+  }
+  .user-janitor {
+    color: var(--base-green) !important;
+  }
+  .user-contributor {
+    color: var(--base-magenta) !important;
+  }
+  .user-builder {
+    color: var(--base-cyan) !important;
+  }
+  .user-platinum {
+    color: var(--base-white) !important;
+  }
+  .user-gold {
+    color: var(--base-yellow) !important;
+  }
+  .user-member {
+    color: inherit;
+  }
+  
+  /* Notices */
+  .ui-corner-all {
+    border-radius: var(--border-radius) !important;
+  }
+  .ui-state-highlight {
+    border: 1px solid var(--bg-light);
+  }
+  div#c-posts div.notice {
+    font-size:0.8em;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    overflow: hidden;
+    background: var(--bg-light) !important;
+  }
+  div#c-posts div.notice ul {
+    margin-left: 1em;
+  }
+  div#c-posts div.notice p {
+    margin: 0;
+  }
+  div#c-posts div.notice .resolved {
+    margin-left: 0.5em;
+    font-weight: bold;
+  }
+  div#c-wiki-pages .other-name, div#excerpt .other-name {
+    background: var(--bg-light) !important;
+    border: 1px solid var(--base-blue) !important;
+    color: var(--base-blue) !important;
+    border-radius: var(--border-radius) !important;
+  }
+  div#c-posts div.nav-notice {
+    background: var(--bg-light) !important;
+    border: var(--bg-dark) !important;
+  }
+  div#notice:not(.ui-state-error) {
+    border: 1px solid var(--base-yellow) !important;
+    background: var(--bg-light) !important;
+    color: var(--base-yellow) !important;
+  }
+  
+  div#c-posts div.notice.notice-parent {
+    border-color: var(--base-green);
+    color: var(--base-green);
+  }
+  div#c-posts div.notice.notice-child {
+    border-color: var(--base-yellow);
+    color: var(--base-yellow);
+  }
+  div#c-posts div.notice.notice-pending {
+    border-color: var(--base-magenta);
+    color: var(--base-magenta);
+  }
+  div#c-posts div.notice.notice-flagged {
+    border-color: var(--base-red);
+    color: var(--base-red);
+  }
+  div#c-posts div.notice.notice-deleted {
+    border-color: var(--bg-light);
+    background: var(--base-red) !important;
+    color: var(--bg-light);
+  }
+  div#c-posts div.notice.notice-appealed {
+    border-color: var(--base-cyan);
+    color: var(--base-cyan);
+  }
+  div#c-posts div.notice.notice-resized {
+    border-color: var(--base-magenta);
+    color: var(--base-magenta);
+  }
+  
+  div#c-posts div#a-show #artist-commentary {
+    border: 1px solid var(--bg-light);
+    border-radius: var(--border-radius);
+    background: var(--bg-dark);
+    color: inherit;
+  }
+  
+  /* Notes/Translations Styling */
+  .note-body {
+    border: 1px solid var(--bg-dark) !important;
+    background: var(--bg-light) !important;
+    border-radius: var(--border-radius);
+  }
+  .note-box {
+    border: 1px solid var(--base-white) !important;
+  }
+  .note-b-x-inner-border {
+    border: 1px solid var(--base-black) !important;
+    background: var(--base-white) !important;
+  }
+  
+  /* BBB Script Styling */
+  /* Tested on better_better_booru version 6.5.4 */
+  /* some/all of this may break if script is updated */
+  #bbb_menu, #bbb_menu .bbb-edit-box {
+    background-color: var(--bg-dark);
+    border: 1px solid var(--bg-light);
+  }
+  #bbb_menu h1 {
+    font-size: 2em;
+    line-height: 1.5em;
+    color: var(--base-blue);
+  }
+  #bbb_menu h2 {
+    font-size: 1.16667em;
+    line-height: 1.5em;
+  }
+  #bb_menu * {
+    font-size: inherit;
+  }
+  #bbb_menu .bbb-scroll-div {
+    background-color: var(--bg-light);
+    border: none;
+  }
+  #bbb_menu > div:nth-child(2) {
+    padding: 0 !important;
+  }
+  #bbb_menu .bbb-expl {
+    background-color: var(--bg-dark);
+    border: 1px solid var(--bg-light);
+  }
+  #bbb_menu .bbb-tab {
+    border: none;
+    border-radius: 0 !important;
+    margin: 0;
+    padding: 6px 10px;
+  }
+  #bbb_menu .bbb-active-tab {
+    background-color: var(--bg-light);
+    font-weight: bold;
+  }
+  #bbb_menu .bbb-header {
+    border-bottom: none !important;
+  }
+  #bbb_menu .bbb-section-options-left {
+    border-right: none !important;
+  }
+  #bbb_menu .bbb-general-label:hover {
+    background-color: var(--bg-dark);
+  }
+  #bbb_menu input, #bbb_menu select, #bbb_menu textarea {
+    border: 1px solid var(--bg-light);
+  }
+  #bbb_menu .bbb-border-div {
+    background-color: var(--bg-dark);
+  }
+  #bbb_menu .bbb-border-settings {
+    background-color: var(--bg-light);
+  }
+  #bbb_menu .bbb-border-button {
+    border: none !important;
+  }
+  .bbb-border-spacer {
+    display: none !important;
+  }
+  #bbb_menu .bbb-edit-link {
+    background-color: var(--bg-light);
+    border: none !important;
+    padding: 0 !important;
+  }
+  #bbb_menu .bbb-button {
+    border: none;
+    border-radius: 0 !important;
+  }
+  a.bbb-button:nth-child(6) {
+    color: var(--base-red) !important;
+  }
+  /* BBB's ajax tag suggestions */
+  .ui-widget {
+    font-family: var(--fonts);
+    font-size: 1.1em;
+  }
+  .ui-widget-content {
+    background: var(--bg-light);
+    border: 1px solid var(--bg-dark);
+    color: var(--fg-light);
+  }
+  .ui-state-focus {
+    background: var(--fg-dark) !important;
+    border: 1px solid var(--bg-light);
+    color: var(--fg-light) !important;
+  }
+  .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border: 1px solid var(--bg-light);
+    background-color: var(--bg-light);
+    color: var(--fg-light);
+  }
+  #open-edit-dialog .ui-state-hover {
+    border: 1px solid var(--base-blue) !important;
+  }
+}z
