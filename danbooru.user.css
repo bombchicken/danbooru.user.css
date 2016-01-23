@@ -689,73 +689,73 @@
   /* BBB Script Styling */
   /* Tested on better_better_booru version 6.5.4 */
   /* some/all of this may break if script is updated */
-  #bbb_menu, #bbb_menu .bbb-edit-box {
+  #bbb-menu, #bbb-menu .bbb-edit-box {
     background-color: var(--bg-dark);
     border: 1px solid var(--bg-light);
   }
-  #bbb_menu h1 {
+  #bbb-menu h1 {
     font-size: 2em;
     line-height: 1.5em;
     color: var(--base-blue);
   }
-  #bbb_menu h2 {
+  #bbb-menu h2 {
     font-size: 1.16667em;
     line-height: 1.5em;
   }
   #bb_menu * {
     font-size: inherit;
   }
-  #bbb_menu .bbb-scroll-div {
+  #bbb-menu .bbb-scroll-div {
     background-color: var(--bg-light);
     border: none;
   }
-  #bbb_menu > div:nth-child(2) {
+  #bbb-menu > div:nth-child(2) {
     padding: 0 !important;
   }
-  #bbb_menu .bbb-expl {
+  #bbb-menu .bbb-expl {
     background-color: var(--bg-dark);
     border: 1px solid var(--bg-light);
   }
-  #bbb_menu .bbb-tab {
+  #bbb-menu .bbb-tab {
     border: none;
     border-radius: 0 !important;
     margin: 0;
     padding: 6px 10px;
   }
-  #bbb_menu .bbb-active-tab {
+  #bbb-menu .bbb-active-tab {
     background-color: var(--bg-light);
     font-weight: bold;
   }
-  #bbb_menu .bbb-header {
+  #bbb-menu .bbb-header {
     border-bottom: none !important;
   }
-  #bbb_menu .bbb-section-options-left {
+  #bbb-menu .bbb-section-options-left {
     border-right: none !important;
   }
-  #bbb_menu .bbb-general-label:hover {
+  #bbb-menu .bbb-general-label:hover {
     background-color: var(--bg-dark);
   }
-  #bbb_menu input, #bbb_menu select, #bbb_menu textarea {
+  #bbb-menu input, #bbb-menu select, #bbb-menu textarea {
     border: 1px solid var(--bg-light);
   }
-  #bbb_menu .bbb-border-div {
+  #bbb-menu .bbb-border-div {
     background-color: var(--bg-dark);
   }
-  #bbb_menu .bbb-border-settings {
+  #bbb-menu .bbb-border-settings {
     background-color: var(--bg-light);
   }
-  #bbb_menu .bbb-border-button {
+  #bbb-menu .bbb-border-button {
     border: none !important;
   }
   .bbb-border-spacer {
     display: none !important;
   }
-  #bbb_menu .bbb-edit-link {
+  #bbb-menu .bbb-edit-link {
     background-color: var(--bg-light);
     border: none !important;
     padding: 0 !important;
   }
-  #bbb_menu .bbb-button {
+  #bbb-menu .bbb-button {
     border: none;
     border-radius: 0 !important;
   }
