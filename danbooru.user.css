@@ -479,49 +479,49 @@
     border: 2px solid var(--bg-light);
   }
   .post-preview.post-status-has-parent img {
-    border-color: var(--base-green);
-  }
-  .post-preview.post-status-has-children img {
     border-color: var(--base-yellow);
   }
+  .post-preview.post-status-has-children img {
+    border-color: var(--base-green);
+  }
   .post-preview.post-status-has-children.post-status-has-parent img {
-    border-color: var(--base-yellow) var(--base-green) var(--base-green) var(--base-yellow);
+    border-color: var(--base-green) var(--base-yellow) var(--base-yellow) var(--base-green);
   }
   .post-preview.post-status-deleted img {
     border-color: var(--base-black);
   }
   .post-preview.post-status-has-parent.post-status-deleted img {
-    border-color: var(--base-green) var(--base-black) var(--base-black) var(--base-green);
-  }
-  .post-preview.post-status-has-children.post-status-deleted img {
     border-color: var(--base-yellow) var(--base-black) var(--base-black) var(--base-yellow);
   }
+  .post-preview.post-status-has-children.post-status-deleted img {
+    border-color: var(--base-green) var(--base-black) var(--base-black) var(--base-green);
+  }
   .post-preview.post-status-has-children.post-status-has-parent.post-status-deleted img {
-    border-color: var(--base-yellow) var(--base-black) var(--base-black) var(--base-green);
+    border-color: var(--base-green) var(--base-black) var(--base-black) var(--base-yellow);
   }
   .post-preview.post-status-pending:not(.mod-queue-preview) img {
     border-color: var(--base-blue);
   }
   .post-preview.post-status-has-children.post-status-pending:not(.mod-queue-preview) img {
-    border-color: var(--base-yellow) var(--base-blue) var(--base-blue) var(--base-yellow);
-  }
-  .post-preview.post-status-has-parent.post-status-pending:not(.mod-queue-preview) img {
     border-color: var(--base-green) var(--base-blue) var(--base-blue) var(--base-green);
   }
+  .post-preview.post-status-has-parent.post-status-pending:not(.mod-queue-preview) img {
+    border-color: var(--base-yellow) var(--base-blue) var(--base-blue) var(--base-yellow);
+  }
   .post-preview.post-status-has-children.post-status-has-parent.post-status-pending:not(.mod-queue-preview) img {
-    border-color: var(--base-yellow) var(--base-blue) var(--base-blue) var(--base-green);
+    border-color: var(--base-green) var(--base-blue) var(--base-blue) var(--base-yellow);
   }
   .post-preview.post-status-flagged img {
     border-color: var(--base-red);
   }
   .post-preview.post-status-has-children.post-status-flagged img {
-    border-color: var(--base-yellow) var(--base-red) var(--base-red) var(--base-yellow);
-  }
-  .post-preview.post-status-has-parent.post-status-flagged img {
     border-color: var(--base-green) var(--base-red) var(--base-red) var(--base-green);
   }
+  .post-preview.post-status-has-parent.post-status-flagged img {
+    border-color: var(--base-yellow) var(--base-red) var(--base-red) var(--base-yellow);
+  }
   .post-preview.post-status-has-children.post-status-has-parent.post-status-flagged img {
-    border-color: var(--base-yellow) var(--base-red) var(--base-red) var(--base-green);
+    border-color: var(--base-green) var(--base-red) var(--base-red) var(--base-yellow);
   }
   
   .post-preview.current-post {
@@ -595,16 +595,16 @@
   }
   
   div#c-posts div.notice.notice-parent {
-    border-color: var(--base-yellow);
-    color: var(--base-yellow);
-  }
-  div#c-posts div.notice.notice-child {
     border-color: var(--base-green);
     color: var(--base-green);
   }
+  div#c-posts div.notice.notice-child {
+    border-color: var(--base-yellow);
+    color: var(--base-yellow);
+  }
   div#c-posts div.notice.notice-pending {
-    border-color: var(--base-magenta);
-    color: var(--base-magenta);
+    border-color: var(--base-blue);
+    color: var(--base-blue);
   }
   div#c-posts div.notice.notice-flagged {
     border-color: var(--base-red);
@@ -630,7 +630,48 @@
     background: var(--bg-dark);
     color: inherit;
   }
-  
+
+  /* Save Search Dialog */
+  .ui-widget-header {
+    border: 1px solid var(--fg-dark);
+    background: var(--fg-dark);
+    color: var(--fg-light);
+    font-weight: bold;
+  }
+  .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border: 1px solid var(--fg-dark);
+    background: var(--fg-dark);
+    color: var(--fg-light);
+    font-weight: bold;
+  }
+
+   /* ajax tag suggestions */
+  .ui-widget {
+    font-family: var(--fonts);
+    font-size: 1.1em;
+  }
+  .ui-widget-content {
+    background: var(--bg-light);
+    border: 1px solid var(--bg-dark);
+    color: var(--fg-light);
+  }
+  .ui-state-focus {
+    background: var(--fg-dark) !important;
+    border: 1px solid var(--bg-light);
+    color: var(--fg-light) !important;
+  }
+  .ui-state-focus a {
+    color: var(--fg-light) !important;
+  }
+  .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border: 1px solid var(--bg-light);
+    background-color: var(--bg-light);
+    color: var(--fg-light);
+  }
+  #open-edit-dialog .ui-state-hover {
+    border: 1px solid var(--base-blue) !important;
+  }
+
   /* Notes/Translations Styling */
   .note-body {
     border: 1px solid var(--bg-dark) !important;
@@ -720,47 +761,5 @@
   }
   a.bbb-button:nth-child(6) {
     color: var(--base-red) !important;
-  }
-  /* ajax tag suggestions */
-  .ui-widget {
-    font-family: var(--fonts);
-    font-size: 1.1em;
-  }
-  .ui-widget-content {
-    background: var(--bg-light);
-    border: 1px solid var(--bg-dark);
-    color: var(--fg-light);
-  }
-  .ui-state-focus {
-    background: var(--fg-dark) !important;
-    border: 1px solid var(--bg-light);
-    color: var(--fg-light) !important;
-  }
-  .ui-state-focus a {
-    color: var(--fg-light) !important;
-  }
-  .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-    border: 1px solid var(--bg-light);
-    background-color: var(--bg-light);
-    color: var(--fg-light);
-  }
-  #open-edit-dialog .ui-state-hover {
-    border: 1px solid var(--base-blue) !important;
-  }
-  /* Save Search Dialog */
-  .ui-widget-header {
-    border: 1px solid var(--fg-dark);
-    background: var(--fg-dark);
-    color: var(--fg-light);
-    font-weight: bold;
-  }
-  .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-    border: 1px solid var(--fg-dark);
-    background: var(--fg-dark);
-    color: var(--fg-light);
-    font-weight: bold;
-  }
-  .ui-corner-all {
-    border-radius: var(--border-radius) !important;
   }
 }
