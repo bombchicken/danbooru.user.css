@@ -11,4 +11,4 @@ I also use some admittedly nonstandard fonts. The style calls for Proxima Nova f
 The style also includes some styling for the Better Better Booru Userscript. Unfortunately, with changes and updates to the script this styling may break frequently.
 
 The style looks like this:
-![](http://i.imgur.com/pWU1Xbl.png)
+![](https://i.imgur.com/kpsfbhQ.png)
