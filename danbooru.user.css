@@ -18,8 +18,8 @@
     --base-yellow: #ffcc66; /* parents, gold members, notifications */
     --base-green: #99cc99; /* janitors, children, character tags */
     --base-cyan: #66cccc; /* builders, category tags, appealed */
-    --base-blue: #6699cc; /* links, mod queue */
-    --base-magenta: #cc99cc; /* contributors, copyrights tags, pending notice, resized notice */
+    --base-blue: #6699cc; /* links, mod queue, pending notice */
+    --base-magenta: #cc99cc; /* contributors, copyrights tags, resized notice */
     --base-brown: #d27b53; /* not used */
     --base-black: #2d2d2d; /* deleted, banned */
     --base-white: #f2f0ec; /* platinum members */
