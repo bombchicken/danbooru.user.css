@@ -763,11 +763,34 @@
     color: var(--base-red) !important;
   }
   #bbb-expl {
-  background-color: var(--bg-dark);
-  border: 1px solid var(--bg-light);
+    background-color: var(--bg-dark);
+    border: 1px solid var(--bg-light);
   }
   .bbb-thumb-info-parent .bbb-thumb-info {
-  background-color: var(--bg-light);
-  z-index: 9001;
+    background-color: var(--bg-dark);
+    z-index: 9001;
+  }
+  #bbb-quick-search {
+    background-color: var(--bg-light);
+    border-bottom: 1px solid var(--fg-dark);
+    border-left: 1px solid var(--fg-dark);
+    border-bottom-left-radius: var(--border-radius);
+  }
+  #bbb-quick-search-status, #bbb-quick-search-pin {
+    /* these are links to images which have been manually recoloured to the desired icon colors.
+    obviously, they won't change if you change the variable colors*/
+    /*background-image: url(http://i.imgur.com/spAeip4.png);*/ /*fg-light*/
+    background-image: url(http://i.imgur.com/1TDxQKq.png);  /*fg-dark*/
+  }
+  #bbb-quick-search-pin {
+    border: 1px solid transparent !important;
+    padding: 1px 10px 16px 6px !important;
+  }
+  #bbb-quick-search-pin:hover {
+    border: 1px solid var(--base-blue) !important;
+    background-color: var(--bg-light) !important;
+  }
+  #bbb-quick-search-pin:enabled {
+    background-color: transparent !important;
   }
 }
