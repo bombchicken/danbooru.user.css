@@ -318,7 +318,17 @@
 
   /* make icons not stand out */
   .ui-icon {
-    filter: grayscale(100%);
+    /* filter: grayscale(100%); */
+    /* these are links to images which have been manually recoloured to the desired icon colors.
+    obviously, they won't change if you change the variable colors*/
+    background-image: url(http://i.imgur.com/spAeip4.png) !important; /*fg-light*/
+    /*background-image: url(http://i.imgur.com/1TDxQKq.png) !important;*/  /*fg-dark*/
+  }
+
+  /* move the 'pin' icon on the detached post editor up a bit*/
+  /* I'm using a relative selector here which may not be best, but from what I can tell the 'pin' icon doesn't have a unique class or id associated with it */
+  button.ui-button:nth-child(3) {
+    bottom: 2px;
   }
 
   /* DText, post formatting */
