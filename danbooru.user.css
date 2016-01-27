@@ -279,6 +279,11 @@
     border-color: var(--base-blue);
   }
 
+  /* Fix subscription text and other text elements to be legible on a dark background */
+  div#c-users div#a-show div.box h2, div#c-users div#a-show div.box h3 {
+    color: var(--fg-dark);
+  }
+
   /* Move form labels to the left of input elements instead of above them. */
   #c-posts #a-show #edit #form .input > label,      /* Rating / Lock / Parent / Source labels */
   #c-posts #a-show #edit #form .input > div > label /* Tags label */ {
