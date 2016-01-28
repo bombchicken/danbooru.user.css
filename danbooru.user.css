@@ -20,7 +20,7 @@
     --base-cyan: #66cccc; /* builders, category tags, appealed */
     --base-blue: #6699cc; /* links, mod queue, pending notice */
     --base-magenta: #cc99cc; /* contributors, copyrights tags, resized notice */
-    --base-brown: #d27b53; /* not used */
+    --base-brown: #d27b53; /* request tags */
     --base-black: #2d2d2d; /* deleted, banned */
     --base-white: #f2f0ec; /* platinum members */
   }
@@ -139,7 +139,7 @@
 
   /* Dim the thumbnails for NSFW images */
   /*.post-preview[data-rating="q"] img {opacity: 0.2;}*/
-  .post-preview[data-rating="e"] img {opacity: 0.2; filter: blur(5px);}
+  .post-preview[data-rating="e"] img {opacity: 0.2; filter: grayscale(100%);}
   .post-preview[data-rating="e"] img:hover {opacity: 1; filter: unset;}
   /*Dim the thumbnails for images from a certain uploader*/
   /*.post-preview[data-uploader="Type-kun"] img {opacity: 0.2;}*/
@@ -381,6 +381,25 @@
   }
   tr.odd > td {
     background: none !important;
+  }
+
+  /* Feedback styling */
+  div#c-user-feedbacks .feedback-category-positive, div#c-moderator-dashboards div#col2 .feedback-category-positive {
+    background: unset !important;
+    color: var(--base-green) !important;
+  }
+  div#c-user-feedbacks .feedback-category-neutral, div#c-moderator-dashboards div#col2 .feedback-category-neutral {
+    background: unset !important;
+  }
+  div#c-user-feedbacks .feedback-category-negative, div#c-moderator-dashboards div#col2 .feedback-category-negative {
+    background: unset !important;
+    color: var(--base-red) !important;
+  }
+  div#c-user-feedbacks [class*='feedback-category-'].even, div#c-moderator-dashboards div#col2 [class*='feedback-category-'].even {
+    background: var(--bg-light) !important;
+  }
+  div#c-user-feedbacks [class*='feedback-category-']:hover, div#c-moderator-dashboards div#col2 [class*='feedback-category-']:hover {
+    background-color: var(--fg-dark) !important;
   }
 
   div#c-posts div#a-show #pool-nav li:hover, div#c-posts div#a-show #search-seq-nav li:hover, div#c-posts div#a-show #favgroup-nav li:hover {
