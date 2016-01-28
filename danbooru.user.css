@@ -808,4 +808,8 @@
   #bbb-quick-search-pin:enabled {
     background-color: transparent !important;
   }
+  .bbb-saved-search-item #saved-searches-nav, .bbb-saved-search-item #saved-searches-nav * {
+    color: var(--base-blue);
+    font-family: var(--fonts);
+  }
 }
