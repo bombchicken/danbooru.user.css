@@ -791,6 +791,11 @@
     border-left: 1px solid var(--fg-dark);
     border-bottom-left-radius: var(--border-radius);
   }
+  #bbb-quick-search.bbb-quick-search-active, #bbb-quick-search.bbb-quick-search-active.bbb-quick-search-show {
+    background-color: var(--bg-light);
+    border-bottom: 1px solid var(--base-blue);
+    border-left: 1px solid var(--base-blue);
+  }
   #bbb-quick-search-status, #bbb-quick-search-pin {
     /* these are links to images which have been manually recoloured to the desired icon colors.
     obviously, they won't change if you change the variable colors*/
