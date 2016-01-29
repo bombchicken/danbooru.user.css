@@ -45,11 +45,11 @@
   div#upload-guide-notice { display:none }
 
   /* Collapse blacklisted tags, hover to show */
-  #blacklist-box ul { display: none; }
-  #blacklist-box:hover ul { display: block; }
+  #blacklist-box ul { display: none !important; }
+  #blacklist-box:hover ul { display: block !important; }
   /* Add a cosmetic arrow indicator */
-  #blacklist-box h1:before { content: "▶ "; }
-  #blacklist-box:hover h1:before { content: "▼ "; }
+  #blacklist-box h1:before, #blacklist-box strong:before { content: "▶ "; }
+  #blacklist-box:hover h1:before, #blacklist-box:hover strong:before { content: "▼ "; }
 
   /* Change header text */
   /* This is not recommended; userjs is typically better for this kind of thing */
@@ -430,6 +430,12 @@
   }
   a:active, a.active {
     color: var(--fg-light) !important;
+  }
+  span.link, .link {
+    color: var(--base-blue);
+  }
+  #blacklist-list li a {
+    color: var(--base-red) !important;
   }
 
   /* Sidebar link styling */
