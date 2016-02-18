@@ -599,7 +599,8 @@
     color: var(--base-yellow) !important;
   }
   .user-member {
-    color: inherit;
+    /*color: inherit;*/
+    color: var(--base-cyan) !important;
   }
 
   /* Notices */
