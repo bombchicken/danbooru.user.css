@@ -600,7 +600,7 @@
   }
   .user-member {
     /*color: inherit;*/
-    color: var(--base-cyan) !important;
+    color: var(--base-blue) !important;
   }
 
   /* Notices */
