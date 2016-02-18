@@ -2,6 +2,8 @@
 /* A danbooru theme using the base16 eighties colour palatte */
 /* Supports Better Better Booru script */
 
+/* Uncomment the below line if you don't have Proxima Nova installed and want to use Montserrat but don't have it installed on your system*/
+/*@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);*/
 @namespace url(http://www.w3.org/1999/xhtml);
 @-moz-document domain("donmai.us") {
   :root {
@@ -587,6 +589,9 @@
   .user-platinum {
     color: var(--base-white) !important;
   }
+  /*.user-platinum::after {*/
+    /*content: '\2767';*/
+  /*}*/
   .user-gold {
     color: var(--base-yellow) !important;
   }
