@@ -22,7 +22,7 @@
     --base-cyan: #66cccc; /* builders, category tags, appealed */
     --base-blue: #6699cc; /* links, mod queue, pending notice */
     --base-magenta: #cc99cc; /* contributors, copyrights tags, resized notice */
-    --base-brown: #d27b53; /* request tags */
+    --base-brown: #d27b53; /* request tags, obsoleted changes */
     --base-black: #2d2d2d; /* deleted, banned */
     --base-white: #f2f0ec; /* platinum members */
   }
@@ -414,6 +414,9 @@
   }
   div#c-post-versions div#a-index del, div#c-post-versions div#a-index del a, div#c-artist-versions div#a-index del, div#c-artist-versions div#a-index del a {
     color: var(--base-red);
+  }
+  div#c-post-versions div#a-index ins.obsolete, div#c-post-versions div#a-index ins.obsolete a, div#c-artist-versions div#a-index ins.obsolete, div#c-artist-versions div#a-index ins.obsolete a {
+    color: var(--base-brown);
   }
 
   div#c-forum-topics span.new {
