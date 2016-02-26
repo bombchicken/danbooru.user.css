@@ -15,7 +15,7 @@
     /* Colours */
     --fg-light: #d3d0c8; --fg-dark: #515151;
     --bg-dark: #2d2d2d; --bg-light: #393939;
-    --base-red: #f2777a; /* admin, flagged, deleted, artist tags */
+    --base-red: #f2777a; /* admin, flagged, banned, artist tags */
     --base-orange: #f99157; /* moderators */
     --base-yellow: #ffcc66; /* parents, gold members, notifications */
     --base-green: #99cc99; /* janitors, children, character tags */
@@ -23,7 +23,7 @@
     --base-blue: #6699cc; /* links, mod queue, pending notice */
     --base-magenta: #cc99cc; /* contributors, copyrights tags, resized notice */
     --base-brown: #d27b53; /* request tags, obsoleted changes */
-    --base-black: #2d2d2d; /* deleted, banned */
+    --base-black: #2d2d2d; /* deleted, banned tags */
     --base-white: #f2f0ec; /* platinum members */
   }
   /* Custom CSS Tweaks - Stolen from the forum */
@@ -88,6 +88,17 @@
   .post-preview[data-tags~="spoilers"] img {filter: blur(5px);}
   .post-preview[data-tags~="spoilers"] img:hover {filter: unset;}
   */
+
+  /*.post-preview[data-flags~="banned"] img {opacity: 0.2; filter: sepia(100%) hue-rotate(-45deg) saturate(3);}*/
+  /*.post-preview[data-flags~="banned"] img:hover {opacity: 1; filter: unset;}*/
+
+  /* Dim thumbnails of banned and deleted images */
+  .post-preview[data-flags~="banned"] img, .post-status-deleted img {
+    opacity: 0.2;
+  }
+  .post-preview[data-flags~="banned"] img:hover, .post-status-deleted img:hover {
+    opacity: 1;
+  }
 
   /* Translation Status Icons in bottom right corner */
   /* General settings for all thumbnail icons. */
@@ -567,6 +578,30 @@
   }
   .post-preview.post-status-has-children.post-status-has-parent.post-status-flagged img {
     border-color: var(--base-green) var(--base-red) var(--base-red) var(--base-yellow);
+  }
+  .post-preview[data-flags~="banned"] img {
+    border-color: var(--base-red);
+  }
+  .post-preview[data-flags~="banned"].post-status-has-children img {
+    border-color: var(--base-green) var(--base-red) var(--base-red) var(--base-green);
+  }
+  .post-preview[data-flags~="banned"].post-status-has-parent img {
+    border-color: var(--base-yellow) var(--base-red) var(--base-red) var(--base-yellow);
+  }
+  .post-preview[data-flags~="banned"].post-status-has-children.post-status-has-parent img {
+    border-color: var(--base-green) var(--base-red) var(--base-red) var(--base-yellow);
+  }
+  .post-preview[data-flags~="banned"].post-status-pending:not(.mod-queue-preview) img {
+    border-color: var(--base-blue) var(--base-red) var(--base-red) var(--base-blue);
+  }
+  .post-preview[data-flags~="banned"].post-status-has-children.post-status-pending:not(.mod-queue-preview) img {
+    border-color: var(--base-green) var(--base-red) var(--base-red) var(--base-blue);
+  }
+  .post-preview[data-flags~="banned"].post-status-has-parent.post-status-pending:not(.mod-queue-preview) img {
+    border-color: var(--base-yellow) var(--base-red) var(--base-red) var(--base-blue);
+  }
+  .post-preview[data-flags~="banned"].post-status-has-children.post-status-has-parent.post-status-pending:not(.mod-queue-preview) img {
+    border-color: var(--base-green) var(--base-red) var(--base-yellow) var(--base-blue);
   }
 
   .post-preview.current-post {
